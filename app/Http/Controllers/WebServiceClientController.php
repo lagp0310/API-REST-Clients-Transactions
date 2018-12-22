@@ -15,7 +15,7 @@ class WebServiceClientController extends Controller
 
         if(!$clients) {
             return response()->json([
-                'error' => 'No clients registered in database'
+                'error' => 'No clients registered in database. '
             ], 404);
         }
         
@@ -29,7 +29,7 @@ class WebServiceClientController extends Controller
 
         if(!$client) {
             return response()->json([
-                'message' => 'Client not found in the database'
+                'message' => 'Client not found in the database. '
             ], 404);
         }
 
@@ -61,7 +61,7 @@ class WebServiceClientController extends Controller
         $client->save();
 
         return response()->json([
-            'message' => 'Client registered successfully'
+            'message' => 'Client registered successfully. '
         ], 201);
 
     }
@@ -72,7 +72,7 @@ class WebServiceClientController extends Controller
 
         if(!$client) {
             return response()->json([
-                'message' => 'Client not found in the database'
+                'message' => 'Client not found in the database. '
             ], 404);
         }
 
@@ -98,7 +98,7 @@ class WebServiceClientController extends Controller
         $client->save();
 
         return response()->json([
-            'message' => 'Client modified successfully'
+            'message' => 'Client modified successfully. '
         ], 200);
 
     }
@@ -109,15 +109,60 @@ class WebServiceClientController extends Controller
 
         if(!$client) {
             return response()->json([
-                'message' => 'Client not found in the database'
+                'message' => 'Client not found in the database. '
             ], 404);
         }
 
         $client->delete();
 
         return response()->json([
-            'message' => 'Client was deleted'
+            'message' => 'Client was deleted. '
         ], 200);
 
     }
+
+    public function searchClient(Request $request) {
+
+        $validator = Validator::make($request->only(['name', 'lastname', 'email']), [
+            'name' => 'sometimes|string|alpha|required_without_all:lastname,email',
+            'lastname' => 'sometimes|string|alpha|required_without_all:name,email',
+            'email' => 'sometimes|string|email|required_without_all:name,lastname'
+        ]);
+
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $result = '';
+        foreach($request->only(['name', 'lastname', 'email']) as $key => $parameter) {
+            if($result) {
+                $result = $result->where($key, $parameter);
+            } else {
+                $result = Client::where($key, $parameter);
+            }
+        }
+
+        $result = $result->get();
+
+        return response()->json($result, 200);
+
+    }
+
+    // public function getClientByName($name) {
+
+    //     return Client::where('name', $name);
+
+    // }
+
+    // public function getClientByLastname($lastname) {
+
+    //     return Client::where('lastname', $lastname);
+
+    // }
+
+    // public function getClientByEmail($email) {
+
+    //     return Client::where('email', $email);
+
+    // }
 }

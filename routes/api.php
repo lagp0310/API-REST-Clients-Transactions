@@ -17,6 +17,11 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
+// TODO: Give this API a version number.
+
+// Search.
+Route::get('/search', 'WebServiceSearchController@search');
+
 // Clients.
 Route::get('/clients', 'WebServiceClientController@getAllClients');
 
