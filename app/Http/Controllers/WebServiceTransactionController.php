@@ -44,7 +44,7 @@ class WebServiceTransactionController extends Controller
     public function createTransaction(Request $request) {
 
         $validator = Validator::make($request->all(), [
-            'client_id' => 'required|integer',
+            'client_id' => 'required|integer|exists:clients,id',
             'order_amount' => 'required|numeric|min:0',
             'order_date' => 'required|date_format:Y-m-d'
         ]);
@@ -76,7 +76,7 @@ class WebServiceTransactionController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'client_id' => 'required|integer',
+            'client_id' => 'required|integer|exists:clients,id',
             'order_amount' => 'required|numeric|min:0',
             'order_date' => 'required|date_format:Y-m-d'
         ]);
