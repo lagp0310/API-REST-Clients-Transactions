@@ -13,12 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-// TODO: Give this API a version number.
-
 // Search.
 Route::get('/search', 'WebServiceSearchController@search');
 
