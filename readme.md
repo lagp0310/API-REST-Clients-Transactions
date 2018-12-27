@@ -16,7 +16,7 @@ docker-compose exec app php artisan migrate --force
   - (PUT) Modify Client -> /api/clients/edit/{id}
   - (DELETE) Delete Client -> /api/clients/delete/{id}
 
-#### JSON Format to Register Client.
+#### JSON Format to Register/Update Client.
 ```json
 {
   "name": "somename",
@@ -32,7 +32,7 @@ docker-compose exec app php artisan migrate --force
   - (PUT) Modify Transaction -> /api/transactions/edit/{id}
   - (DELETE) Delete Transaction -> /api/transactions/delete/{id}
   
-#### JSON Format to Register Transaction.
+#### JSON Format to Register/Update Transaction.
 ```json
 {
   "client_id": "id",
@@ -43,3 +43,5 @@ docker-compose exec app php artisan migrate --force
 
 ## Helpful Guides.
   - https://www.digitalocean.com/community/tutorials/how-to-set-up-laravel-nginx-and-mysql-with-docker-compose
+  - https://medium.com/@kamerk22/the-smart-way-to-handle-request-validation-in-laravel-5e8886279271
+  - https://paulund.co.uk/disable-validation-redirect-in-laravel
