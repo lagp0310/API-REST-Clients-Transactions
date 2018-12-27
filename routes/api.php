@@ -13,9 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-// Search.
-Route::get('/search', 'WebServiceSearchController@search');
-
 // Clients.
 Route::get('/clients', 'WebServiceClientController@getAllClients');
 

@@ -47,7 +47,7 @@ class ClientEditRequest extends FormRequest
                 'string',
                 'email',
                 'max:255',
-                Rule::unique('clients')->ignore($this->id)
+                Rule::unique('clients')->ignore($this->query('id'))
             ]
         ];
     }

@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\TransactionRequest;
+use Illuminate\Support\Facades\DB;
 use App\Transaction;
 
 class WebServiceTransactionController extends Controller
 {
     public function getAllTransactions(Request $request) 
     {
-        $transactions = Transaction::all();
+        $transactions = DB::table('transactions')->orderBy('client_id', 'asc')
+                        ->select('id', 'client_id', 'order_amount', 'order_date')->get();
 
         if(!$transactions) {
             return response()->json([

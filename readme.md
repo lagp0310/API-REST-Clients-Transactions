@@ -37,7 +37,7 @@ docker-compose exec app php artisan migrate --force
 {
   "client_id": "id",
   "order_amount": "amount",
-  "order_date": "yyyy/mm/dd"
+  "order_date": "yyyy-mm-dd"
 }
 ```
 

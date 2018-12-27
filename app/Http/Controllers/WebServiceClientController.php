@@ -7,13 +7,15 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Http\Requests\ClientStoreRequest;
 use App\Http\Requests\ClientEditRequest;
+use Illuminate\Support\Facades\DB;
 use App\Client;
 
 class WebServiceClientController extends Controller
 {
     public function getAllClients(Request $request) 
     {
-        $clients = Client::all();
+        $clients = DB::table('clients')->orderBy('id', 'asc')
+                    ->select('id', 'name', 'lastname', 'email')->get();
 
         if(!$clients) {
             return response()->json([
