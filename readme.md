@@ -10,11 +10,11 @@ docker-compose exec app php artisan migrate --force
 
 ## How to use this API.
 ### Clients:
-  - (GET) Get all -> /api/clients
-  - (GET) Get specific Client -> /api/clients/{id}
-  - (POST) Create Client -> /api/clients/register
-  - (PUT) Modify Client -> /api/clients/edit/{id}
-  - (DELETE) Delete Client -> /api/clients/delete/{id}
+  - (GET) Get all -> http://your_server_ip/api/clients
+  - (GET) Get specific Client -> http://your_server_ip/api/clients/{id}
+  - (POST) Create Client -> http://your_server_ip/api/clients/register
+  - (PUT) Modify Client -> http://your_server_ip/api/clients/edit/{id}
+  - (DELETE) Delete Client -> http://your_server_ip/api/clients/delete/{id}
 
 #### JSON Format to Register/Update Client.
 ```json
@@ -26,11 +26,11 @@ docker-compose exec app php artisan migrate --force
 ```
 
 ### Transactions:
-  - (GET) Get all -> /api/transactions
-  - (GET) Get specific Transaction -> /api/transactions/{id}
-  - (POST) Create Transaction -> /api/transactions/register
-  - (PUT) Modify Transaction -> /api/transactions/edit/{id}
-  - (DELETE) Delete Transaction -> /api/transactions/delete/{id}
+  - (GET) Get all -> http://your_server_ip/api/transactions
+  - (GET) Get specific Transaction -> http://your_server_ip/api/transactions/{id}
+  - (POST) Create Transaction -> http://your_server_ip/api/transactions/register
+  - (PUT) Modify Transaction -> http://your_server_ip/api/transactions/edit/{id}
+  - (DELETE) Delete Transaction -> http://your_server_ip/api/transactions/delete/{id}
   
 #### JSON Format to Register/Update Transaction.
 ```json
@@ -45,3 +45,8 @@ docker-compose exec app php artisan migrate --force
   - https://www.digitalocean.com/community/tutorials/how-to-set-up-laravel-nginx-and-mysql-with-docker-compose
   - https://medium.com/@kamerk22/the-smart-way-to-handle-request-validation-in-laravel-5e8886279271
   - https://paulund.co.uk/disable-validation-redirect-in-laravel
+
+## Authors.
+  - Luis Guerrero.
+  - Luis Mesa.
+  - Moisés Escudero.
