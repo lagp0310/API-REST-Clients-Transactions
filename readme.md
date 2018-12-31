@@ -49,4 +49,4 @@ docker-compose exec app php artisan migrate --force
 ## Authors.
   - Luis Guerrero.
   - Luis Mesa.
-  - Moisés Escudero.
+  - Moisés Escudero. 
