@@ -1,9 +1,14 @@
 ## How to build.
 
+Build the application and create the containers,
 ```
 docker-compose build && docker-compose up -d
 ```
-Then,
+Install dependencies for Laravel,
+```
+docker-compose exec app composer install 
+```
+Then make migrations, 
 ```
 docker-compose exec app php artisan migrate --force
 ```
