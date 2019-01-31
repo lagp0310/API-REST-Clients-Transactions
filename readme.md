@@ -1,5 +1,5 @@
 ## About.
-A small API which allows the consumers to store, get, edit and delete Clients and Transactions in JSON Format.
+A small API which allows the consumers to store, retrieve, edit and delete Clients and Transactions in JSON Format.
 
 ## How to build.
 
