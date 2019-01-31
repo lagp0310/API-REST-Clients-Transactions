@@ -1,5 +1,5 @@
 ## About.
-A small API which allows the consumers to store, retrieve, edit and delete Clients and Transactions in JSON Format.
+A small API which allows consumers to store, retrieve, edit and delete Clients and Transactions in JSON Format.
 
 ## How to build.
 
@@ -17,12 +17,13 @@ docker-compose exec app php artisan migrate --force
 ```
 
 ## How to consume this API.
+Once you know the IP Address of your Docker container, you can start making requests to this API by using ```http://your_server_ip``` prefix for the following routes:
 ### Clients:
-  - ```(GET)``` Get all -> http://your_server_ip/api/clients
-  - ```(GET)``` Get specific Client -> http://your_server_ip/api/clients/{id}
-  - ```(POST)``` Create Client -> http://your_server_ip/api/clients/register
-  - ```(PUT)``` Modify Client -> http://your_server_ip/api/clients/edit/{id}
-  - ```(DELETE)``` Delete Client -> http://your_server_ip/api/clients/delete/{id}
+  - ```(GET)``` Get all -> /api/clients
+  - ```(GET)``` Get specific Client -> /api/clients/{id}
+  - ```(POST)``` Create Client -> /api/clients/register
+  - ```(PUT)``` Modify Client -> /api/clients/edit/{id}
+  - ```(DELETE)``` Delete Client -> /api/clients/delete/{id}
 
 #### JSON Format to Register/Update Client.
 ```json
@@ -34,11 +35,11 @@ docker-compose exec app php artisan migrate --force
 ```
 
 ### Transactions:
-  - ```(GET)``` Get all -> http://your_server_ip/api/transactions
-  - ```(GET)``` Get specific Transaction -> http://your_server_ip/api/transactions/{id}
-  - ```(POST)``` Create Transaction -> http://your_server_ip/api/transactions/register
-  - ```(PUT)``` Modify Transaction -> http://your_server_ip/api/transactions/edit/{id}
-  - ```(DELETE)``` Delete Transaction -> http://your_server_ip/api/transactions/delete/{id}
+  - ```(GET)``` Get all -> /api/transactions
+  - ```(GET)``` Get specific Transaction -> /api/transactions/{id}
+  - ```(POST)``` Create Transaction -> /api/transactions/register
+  - ```(PUT)``` Modify Transaction -> /api/transactions/edit/{id}
+  - ```(DELETE)``` Delete Transaction -> /api/transactions/delete/{id}
   
 #### JSON Format to Register/Update Transaction.
 ```json
