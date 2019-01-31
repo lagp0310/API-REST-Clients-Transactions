@@ -12,6 +12,12 @@ use App\Client;
 
 class WebServiceClientController extends Controller
 {
+    /**
+     * Get All Clients from the Database.
+     *
+     * @param Request $request
+     * @return void
+     */
     public function getAllClients(Request $request) 
     {
         $clients = DB::table('clients')->orderBy('id', 'asc')
@@ -26,6 +32,13 @@ class WebServiceClientController extends Controller
         return response()->json($clients, 200);
     }
 
+    /**
+     * Get a specific Client by using it's ID.
+     *
+     * @param Request $request
+     * @param [type] $id
+     * @return void
+     */
     public function getClientById(Request $request, $id) 
     {
         $client = Client::find($id);
@@ -44,6 +57,12 @@ class WebServiceClientController extends Controller
         ], 200);
     }
 
+    /**
+     * Stores a Client in the Database.
+     *
+     * @param ClientStoreRequest $request
+     * @return void
+     */
     public function createClient(ClientStoreRequest $request) 
     {
         $validatedData = $request->validated();
@@ -59,7 +78,14 @@ class WebServiceClientController extends Controller
         ], 201);
     }
 
-    public function modifyClient(ClientEditRequest $request, $id) 
+    /**
+     * Edits a Client in the Database.
+     *
+     * @param ClientEditRequest $request
+     * @param [type] $id
+     * @return void
+     */
+    public function editClient(ClientEditRequest $request, $id) 
     {
         $client = Client::find($id);
 
@@ -81,6 +107,13 @@ class WebServiceClientController extends Controller
         ], 200);
     }
 
+    /**
+     * Deletes a Client from the Database.
+     *
+     * @param Request $request
+     * @param [type] $id
+     * @return void
+     */
     public function deleteClient(Request $request, $id) 
     {
         $client = Client::find($id);

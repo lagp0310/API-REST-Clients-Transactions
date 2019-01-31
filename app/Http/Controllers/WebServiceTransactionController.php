@@ -10,6 +10,12 @@ use App\Transaction;
 
 class WebServiceTransactionController extends Controller
 {
+    /**
+     * Get All Transactions from the Database.
+     *
+     * @param Request $request
+     * @return void
+     */
     public function getAllTransactions(Request $request) 
     {
         $transactions = DB::table('transactions')->orderBy('client_id', 'asc')
@@ -24,6 +30,13 @@ class WebServiceTransactionController extends Controller
         return response()->json($transactions, 200);
     }
 
+    /**
+     * Get a specific Transaction by using it's ID.
+     *
+     * @param Request $request
+     * @param [type] $id
+     * @return void
+     */
     public function getTransactionById(Request $request, $id) 
     {
         $transaction = Transaction::find($id);
@@ -42,6 +55,12 @@ class WebServiceTransactionController extends Controller
         ], 200);
     }
 
+    /**
+     * Stores a Transaction in the Database.
+     *
+     * @param TransactionRequest $request
+     * @return void
+     */
     public function createTransaction(TransactionRequest $request) 
     {
         $validatedData = $request->validated();
@@ -57,7 +76,14 @@ class WebServiceTransactionController extends Controller
         ], 201);
     }
 
-    public function modifyTransaction(TransactionRequest $request, $id) 
+    /**
+     * Edits a Transaction in the Database.
+     *
+     * @param TransactionRequest $request
+     * @param [type] $id
+     * @return void
+     */
+    public function editTransaction(TransactionRequest $request, $id) 
     {
         $transaction = Transaction::find($id);
 
@@ -79,6 +105,13 @@ class WebServiceTransactionController extends Controller
         ], 200);
     }
 
+    /**
+     * Deletes a Transaction from the Database.
+     *
+     * @param Request $request
+     * @param [type] $id
+     * @return void
+     */
     public function deleteTransaction(Request $request, $id) 
     {
         $transaction = Transaction::find($id);

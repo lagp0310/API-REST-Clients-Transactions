@@ -20,7 +20,7 @@ Route::get('/clients/{id}', 'WebServiceClientController@getClientById')->where('
 
 Route::post('/clients/register', 'WebServiceClientController@createClient');
 
-Route::put('/clients/edit/{id}', 'WebServiceClientController@modifyClient')->where('id', '[0-9]+');
+Route::put('/clients/edit/{id}', 'WebServiceClientController@editClient')->where('id', '[0-9]+');
 
 Route::delete('/clients/delete/{id}', 'WebServiceClientController@deleteClient')->where('id', '[0-9]+');
 
@@ -31,6 +31,6 @@ Route::get('/transactions/{id}', 'WebServiceTransactionController@getTransaction
 
 Route::post('/transactions/register', 'WebServiceTransactionController@createTransaction');
 
-Route::put('/transactions/edit/{id}', 'WebServiceTransactionController@modifyTransaction')->where('id', '[0-9]+');
+Route::put('/transactions/edit/{id}', 'WebServiceTransactionController@editTransaction')->where('id', '[0-9]+');
 
 Route::delete('/transactions/delete/{id}', 'WebServiceTransactionController@deleteTransaction')->where('id', '[0-9]+');
