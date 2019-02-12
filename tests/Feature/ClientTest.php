@@ -65,7 +65,7 @@ class ClientTest extends TestCase
      *
      * @return void
      */
-    public function testEditClient() {
+    public function testUpdateClient() {
         $faker = Faker\Factory::create();
         $storedClient = factory(Client::class)->create();
         $clientEditedData = [
