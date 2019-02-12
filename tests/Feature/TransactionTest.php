@@ -66,7 +66,7 @@ class TransactionTest extends TestCase
      *
      * @return void
      */
-    public function testEditTransaction() {
+    public function testUpdateTransaction() {
         $faker = Faker\Factory::create();
         $storedTransaction = factory(Transaction::class)->create();
         $transactionEditedData = [
