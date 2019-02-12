@@ -26,10 +26,10 @@ class WebServiceClientController extends Controller
         if(!$clients) {
             return response()->json([
                 'error' => 'No clients registered in database. '
-            ], 404);
+            ], 404, [], JSON_PRETTY_PRINT);
         }
         
-        return response()->json($clients, 200);
+        return response()->json($clients, 200, [], JSON_PRETTY_PRINT);
     }
 
     /**
@@ -46,7 +46,7 @@ class WebServiceClientController extends Controller
         if(!$client) {
             return response()->json([
                 'message' => 'Client not found in the database. '
-            ], 404);
+            ], 404, [], JSON_PRETTY_PRINT);
         }
 
         return response()->json([
@@ -54,7 +54,7 @@ class WebServiceClientController extends Controller
             'name' => $client->name,
             'lastname' => $client->lastname,
             'email' => $client->email
-        ], 200);
+        ], 200, [], JSON_PRETTY_PRINT);
     }
 
     /**
@@ -75,24 +75,24 @@ class WebServiceClientController extends Controller
 
         return response()->json([
             'message' => 'Client registered successfully. '
-        ], 201);
+        ], 201, [], JSON_PRETTY_PRINT);
     }
 
     /**
-     * Edits a Client in the Database.
+     * Updates a Client in the Database.
      *
      * @param ClientEditRequest $request
      * @param [type] $id
      * @return void
      */
-    public function editClient(ClientEditRequest $request, $id) 
+    public function updateClient(ClientEditRequest $request, $id) 
     {
         $client = Client::find($id);
 
         if(!$client) {
             return response()->json([
                 'message' => 'Client not found in the database. '
-            ], 404);
+            ], 404, [], JSON_PRETTY_PRINT);
         }
 
         $validatedData = $request->validated();
@@ -104,7 +104,7 @@ class WebServiceClientController extends Controller
 
         return response()->json([
             'message' => 'Client modified successfully. '
-        ], 200);
+        ], 200, [], JSON_PRETTY_PRINT);
     }
 
     /**
@@ -121,13 +121,13 @@ class WebServiceClientController extends Controller
         if(!$client) {
             return response()->json([
                 'message' => 'Client not found in the database. '
-            ], 404);
+            ], 404, [], JSON_PRETTY_PRINT);
         }
 
         $client->delete();
 
         return response()->json([
             'message' => 'Client was deleted. '
-        ], 200);
+        ], 200, [], JSON_PRETTY_PRINT);
     }
 }

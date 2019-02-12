@@ -24,10 +24,10 @@ class WebServiceTransactionController extends Controller
         if(!$transactions) {
             return response()->json([
                 'error' => 'No transactions registered in database'
-            ], 404);
+            ], 404, [], JSON_PRETTY_PRINT);
         }
         
-        return response()->json($transactions, 200);
+        return response()->json($transactions, 200, [], JSON_PRETTY_PRINT);
     }
 
     /**
@@ -44,7 +44,7 @@ class WebServiceTransactionController extends Controller
         if(!$transaction) {
             return response()->json([
                 'message' => 'Transaction not found in the database'
-            ], 404);
+            ], 404, [], JSON_PRETTY_PRINT);
         }
 
         return response()->json([
@@ -52,7 +52,7 @@ class WebServiceTransactionController extends Controller
             'client_id' => $transaction->client_id,
             'order_amount' => $transaction->order_amount,
             'order_date' => $transaction->order_date
-        ], 200);
+        ], 200, [], JSON_PRETTY_PRINT);
     }
 
     /**
@@ -73,24 +73,24 @@ class WebServiceTransactionController extends Controller
 
         return response()->json([
             'message' => 'Transaction registered successfully'
-        ], 201);
+        ], 201, [], JSON_PRETTY_PRINT);
     }
 
     /**
-     * Edits a Transaction in the Database.
+     * Updates a Transaction in the Database.
      *
      * @param TransactionRequest $request
      * @param [type] $id
      * @return void
      */
-    public function editTransaction(TransactionRequest $request, $id) 
+    public function updateTransaction(TransactionRequest $request, $id) 
     {
         $transaction = Transaction::find($id);
 
         if(!$transaction) {
             return response()->json([
                 'message' => 'Transaction not found in the database'
-            ], 404);
+            ], 404, [], JSON_PRETTY_PRINT);
         }
 
         $validatedData = $request->validated();
@@ -102,7 +102,7 @@ class WebServiceTransactionController extends Controller
 
         return response()->json([
             'message' => 'Transaction modified successfully'
-        ], 200);
+        ], 200, [], JSON_PRETTY_PRINT);
     }
 
     /**
@@ -119,13 +119,13 @@ class WebServiceTransactionController extends Controller
         if(!$transaction) {
             return response()->json([
                 'message' => 'Transaction not found in the database'
-            ], 404);
+            ], 404, [], JSON_PRETTY_PRINT);
         }
 
         $transaction->delete();
 
         return response()->json([
             'message' => 'Transaction was deleted'
-        ], 200);
+        ], 200, [], JSON_PRETTY_PRINT);
     }
 }
