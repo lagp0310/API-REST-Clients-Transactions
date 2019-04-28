@@ -59,6 +59,7 @@ Once you know the IP Address of your Docker container, you can start making requ
   - [HTTP Tests- Laravel's Official Documentation](https://laravel.com/docs/5.7/http-tests)  
   - [Database Testing - Laravel's Official Documentation](https://laravel.com/docs/5.7/database-testing)  
   - [How to Run PHPUnit Tests in Laravel](https://stackoverflow.com/questions/47009667/how-to-run-phpunit-in-laravel-5-5)  
+  - [Migrating from Laravel 5.7 to 5.8](https://laravel.com/docs/5.8/upgrade#upgrade-5.8.0)
 
 ## Authors.
   - Luis Guerrero.
