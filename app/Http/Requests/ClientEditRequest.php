@@ -19,7 +19,7 @@ class ClientEditRequest extends FormRequest
      */
     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(response()->json($validator->errors(), 400));
+        throw new HttpResponseException(response()->json($validator->errors(), 422));
     }
 
     /**
