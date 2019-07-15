@@ -62,6 +62,23 @@ class TransactionTest extends TestCase
     }
 
     /**
+     * Tries to store a Transaction in the Database.
+     *
+     * @return void
+     */
+    public function testStoreTransactionWithFailedValidation() {
+        $transaction = factory(Transaction::class)->make()->toArray();
+        $transaction['client_id'] = 0;
+        $response = $this->json('POST', '/api/transactions/register', $transaction);
+        $response->assertStatus(422);
+        $response->assertExactJson([
+            'client_id' => [
+                'The client id does not exist in our database.'
+            ]
+        ]);
+    }
+
+    /**
      * Edits a Transaction stored in the Database.
      *
      * @return void
@@ -78,6 +95,28 @@ class TransactionTest extends TestCase
         $response->assertStatus(200);
         $response->assertExactJson([
             'message' => 'Transaction modified successfully'
+        ]);
+    }
+
+    /**
+     * Tries to edit a Transaction stored in the Database.
+     *
+     * @return void
+     */
+    public function testUpdateTransactionWithFailedValidation() {
+        $faker = Faker\Factory::create();
+        $storedTransaction = factory(Transaction::class)->create();
+        $transactionEditedData = [
+            'client_id' => 0,
+            'order_amount' => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
+            'order_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        ];
+        $response = $this->json('PUT', '/api/transactions/edit/' . $storedTransaction->id, $transactionEditedData);
+        $response->assertStatus(422);
+        $response->assertExactJson([
+            'client_id' => [
+                'The client id does not exist in our database.'
+            ]
         ]);
     }
 
