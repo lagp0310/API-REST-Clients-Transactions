@@ -61,6 +61,23 @@ class ClientTest extends TestCase
     }
 
     /**
+     * Tries to store a Client in the Database.
+     *
+     * @return void
+     */
+    public function testStoreClientWithFailedValidation() {
+        $client = factory(Client::class)->make()->toArray();
+        $client['email'] = '';
+        $response = $this->json('POST', '/api/clients/register', $client);
+        $response->assertStatus(422);
+        $response->assertExactJson([
+            'email' => [
+                'The email is required.'
+            ]
+        ]);
+    }
+
+    /**
      * Edits a Client stored in the Database.
      *
      * @return void
@@ -77,6 +94,28 @@ class ClientTest extends TestCase
         $response->assertStatus(200);
         $response->assertExactJson([
             'message' => 'Client modified successfully. '
+        ]);
+    }
+
+    /**
+     * Tries to edit a Client stored in the Database.
+     *
+     * @return void
+     */
+    public function testUpdateClientWithFailedValidation() {
+        $faker = Faker\Factory::create();
+        $storedClient = factory(Client::class)->create();
+        $clientEditedData = [
+            'name' => $faker->firstNameMale,
+            'lastname' => $faker->lastName,
+            'email' => '',
+        ];
+        $response = $this->json('PUT', '/api/clients/edit/' . $storedClient->id, $clientEditedData);
+        $response->assertStatus(422);
+        $response->assertExactJson([
+            'email' => [
+                'The email is required.'
+            ]
         ]);
     }
 

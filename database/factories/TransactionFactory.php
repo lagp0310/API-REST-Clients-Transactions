@@ -3,7 +3,7 @@
 use Faker\Generator as Faker;
 use App\Transaction;
 
-$factory->define(Transaction::class, function (Faker $faker) {
+$factory->define(Transaction::class, function(Faker $faker) {
     return [
         'client_id' => function() {
             return factory(App\Client::class)->create()->id;
