@@ -50,18 +50,30 @@ Once you know the IP Address of your Docker container, you can start making requ
 }
 ```
 
+## Running Tests.
+Simply run:
+```bash
+composer run-script test
+```
+or:
+```bash
+composer test
+```
+
 ## Helpful Guides.
   - [How To Setup Laravel Nginx and MySQL with Docker Compose - Digital Ocean.](https://www.digitalocean.com/community/tutorials/how-to-set-up-laravel-nginx-and-mysql-with-docker-compose)
   - [The Smart Way to Handle Request Validation in Laravel - Medium.](https://medium.com/@kamerk22/the-smart-way-to-handle-request-validation-in-laravel-5e8886279271)
   - [Disable Validation Redirect in Laravel.](https://paulund.co.uk/disable-validation-redirect-in-laravel)
-  - [Tests Laravel Applications - Blog Pusher](https://blog.pusher.com/tests-laravel-applications/)  
-  - [Testing - Laravel's Official Documentation](https://laravel.com/docs/5.7/testing)
-  - [HTTP Tests- Laravel's Official Documentation](https://laravel.com/docs/5.7/http-tests)  
-  - [Database Testing - Laravel's Official Documentation](https://laravel.com/docs/5.7/database-testing)  
-  - [How to Run PHPUnit Tests in Laravel](https://stackoverflow.com/questions/47009667/how-to-run-phpunit-in-laravel-5-5)  
-  - [Migrating from Laravel 5.7 to 5.8](https://laravel.com/docs/5.8/upgrade#upgrade-5.8.0)
+  - [Tests Laravel Applications - Blog Pusher.](https://blog.pusher.com/tests-laravel-applications/)  
+  - [Testing - Laravel's Official Documentation.](https://laravel.com/docs/5.7/testing)
+  - [HTTP Tests- Laravel's Official Documentation.](https://laravel.com/docs/5.7/http-tests)  
+  - [Database Testing - Laravel's Official Documentation.](https://laravel.com/docs/5.7/database-testing)  
+  - [How to Run PHPUnit Tests in Laravel.](https://stackoverflow.com/questions/47009667/how-to-run-phpunit-in-laravel-5-5)  
+  - [Migrating from Laravel 5.7 to 5.8.](https://laravel.com/docs/5.8/upgrade#upgrade-5.8.0)  
+  - [Composer - Scripts.](https://getcomposer.org/doc/articles/scripts.md)
 
 ## Authors.
   - Luis Guerrero.
-  - Luis Mesa.
-  - Moisés Escudero. 
+
+## License.
+MIT.
