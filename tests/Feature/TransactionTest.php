@@ -54,7 +54,7 @@ class TransactionTest extends TestCase
      */
     public function testStoreTransaction() {
         $transaction = factory(Transaction::class)->make()->toArray();
-        $response = $this->json('POST', '/api/transactions/register', $transaction);
+        $response = $this->json('POST', '/api/transactions', $transaction);
         $response->assertStatus(201);
         $response->assertExactJson([
             'message' => 'Transaction registered successfully'
@@ -69,7 +69,7 @@ class TransactionTest extends TestCase
     public function testStoreTransactionWithFailedValidation() {
         $transaction = factory(Transaction::class)->make()->toArray();
         $transaction['client_id'] = 0;
-        $response = $this->json('POST', '/api/transactions/register', $transaction);
+        $response = $this->json('POST', '/api/transactions', $transaction);
         $response->assertStatus(422);
         $response->assertExactJson([
             'client_id' => [
@@ -91,7 +91,7 @@ class TransactionTest extends TestCase
             'order_amount' => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
             'order_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
         ];
-        $response = $this->json('PUT', '/api/transactions/edit/' . $storedTransaction->id, $transactionEditedData);
+        $response = $this->json('PUT', '/api/transactions/' . $storedTransaction->id, $transactionEditedData);
         $response->assertStatus(200);
         $response->assertExactJson([
             'message' => 'Transaction modified successfully'
@@ -111,7 +111,7 @@ class TransactionTest extends TestCase
             'order_amount' => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
             'order_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
         ];
-        $response = $this->json('PUT', '/api/transactions/edit/' . $storedTransaction->id, $transactionEditedData);
+        $response = $this->json('PUT', '/api/transactions/' . $storedTransaction->id, $transactionEditedData);
         $response->assertStatus(422);
         $response->assertExactJson([
             'client_id' => [
@@ -127,7 +127,7 @@ class TransactionTest extends TestCase
      */
     public function testDeleteTransaction() {
         $transaction = factory(Transaction::class)->create();
-        $response = $this->json('DELETE', '/api/transactions/delete/' . $transaction->id);
+        $response = $this->json('DELETE', '/api/transactions/' . $transaction->id);
         $response->assertStatus(200);
         $response->assertExactJson([
             'message' => 'Transaction was deleted'

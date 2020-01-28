@@ -53,7 +53,7 @@ class ClientTest extends TestCase
      */
     public function testStoreClient() {
         $client = factory(Client::class)->make()->toArray();
-        $response = $this->json('POST', '/api/clients/register', $client);
+        $response = $this->json('POST', '/api/clients', $client);
         $response->assertStatus(201);
         $response->assertExactJson([
             'message' => 'Client registered successfully. '
@@ -68,7 +68,7 @@ class ClientTest extends TestCase
     public function testStoreClientWithFailedValidation() {
         $client = factory(Client::class)->make()->toArray();
         $client['email'] = '';
-        $response = $this->json('POST', '/api/clients/register', $client);
+        $response = $this->json('POST', '/api/clients', $client);
         $response->assertStatus(422);
         $response->assertExactJson([
             'email' => [
@@ -90,7 +90,7 @@ class ClientTest extends TestCase
             'lastname' => $faker->lastName,
             'email' => $faker->unique()->safeEmail,
         ];
-        $response = $this->json('PUT', '/api/clients/edit/' . $storedClient->id, $clientEditedData);
+        $response = $this->json('PUT', '/api/clients/' . $storedClient->id, $clientEditedData);
         $response->assertStatus(200);
         $response->assertExactJson([
             'message' => 'Client modified successfully. '
@@ -110,7 +110,7 @@ class ClientTest extends TestCase
             'lastname' => $faker->lastName,
             'email' => '',
         ];
-        $response = $this->json('PUT', '/api/clients/edit/' . $storedClient->id, $clientEditedData);
+        $response = $this->json('PUT', '/api/clients/' . $storedClient->id, $clientEditedData);
         $response->assertStatus(422);
         $response->assertExactJson([
             'email' => [
@@ -126,7 +126,7 @@ class ClientTest extends TestCase
      */
     public function testDeleteClient() {
         $client = factory(Client::class)->create();
-        $response = $this->json('DELETE', '/api/clients/delete/' . $client->id);
+        $response = $this->json('DELETE', '/api/clients/' . $client->id);
         $response->assertStatus(200);
         $response->assertExactJson([
             'message' => 'Client was deleted. '
